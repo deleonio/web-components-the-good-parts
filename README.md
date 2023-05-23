@@ -1,11 +1,5 @@
-# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
+# Web Components - The good parts
 
-To start the slide show:
+With the help of the **Web Component** standard of the **W3C** it has been possible to create **custom HTML elements** since **2014**. However, due to the **lack of** comprehensive **browser support**, **Web Components** had a hard time asserting themselves for a long time.
 
-- `npm install`
-- `npm run dev`
-- visit http://localhost:3030
-
-Edit the [slides.md](./slides.md) to see the changes.
-
-Learn more about Slidev on [documentations](https://sli.dev/).
+Thanks to **Microsoft**, **2021** will turn the tide and the web component standard can finally show what it's made of. With the **Good Part** we show how **powerful** Web Components are, how to use them **properly** and which cool **features** are still waiting for us.

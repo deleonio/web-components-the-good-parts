@@ -27,9 +27,9 @@ layout: quote
 
 # Teaser
 
-Mit Hilfe des **Web Component**-Standard des **W3C** ist es schon seit **2014** möglich **eigene HTML-Elemente** zu erstellen. Aufgrund der **fehlenden** übergreifenden **Browser-Unterstützung** hatten es jedoch die **Web Components** lange Zeit schwer sich durchzusetzen.
+With the help of the **Web Component**standard of the **W3C**it has been possible to create **custom HTML elements**since **2014**. However, due to the **lack of**comprehensive **browser support**, **Web Components**had a hard time asserting themselves for a long time.
 
-Dank **Microsoft** wendet sich **2021** das Blatt und der Web Component-Standard kann endlich zeigen was in ihm steckt. Mit den **Good Part** zeigen wir, wie **leistungsfähig** Web Components sind, wie man sie **richtig verwenden** muss und welche coolen **Features** noch auf uns warten.
+Thanks to **Microsoft**, **2021**will turn the tide and the web component standard can finally show what it's made of. With the **Good Part**we show how **powerful**Web Components are, how to use them **properly**and which cool **features**are still waiting for us.
 
 ---
 layout: two-cols
