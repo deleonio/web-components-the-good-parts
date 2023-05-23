@@ -1,0 +1,52 @@
+<html>
+  <body>
+    <script type="module">
+      import { MyShadowElement } from "../web-component.js";
+      class MyButton extends MyShadowElement {
+        button = document.createElement("button");
+        constructor() {
+          super();
+          const slot = document.createElement("slot");
+          this.button.appendChild(slot);
+        }
+        connectedCallback() {
+          super.connectedCallback();
+          this.root.appendChild(this.button);
+        }
+      }
+      customElements.define("my-button", MyButton);
+    </script>
+    <script type="module">
+      import { MyShadowElement } from "../web-component.js";
+      class MyToolbar extends MyShadowElement {
+        ul = document.createElement("ul");
+        constructor() {
+          super();
+          const slot = document.createElement("slot");
+          const button = document.createElement("my-button");
+          const li = document.createElement("li");
+          button.appendChild(slot);
+          button.setAttribute("shadow", "");
+          li.appendChild(button);
+          this.ul.appendChild(li);
+        }
+        connectedCallback() {
+          super.connectedCallback();
+          this.root.appendChild(this.ul);
+        }
+      }
+      customElements.define("my-toolbar", MyToolbar);
+    </script>
+    <my-button>Without shadow</my-button>
+    <my-button shadow>Shadowed (open)</my-button>
+    <my-button shadow="open">Shadow open</my-button>
+    <my-button shadow="closed">Shadow closed</my-button>
+    <hr />
+    <my-toolbar>Without shadow</my-toolbar>
+    <my-toolbar shadow>Shadowed (open)</my-toolbar>
+    <my-toolbar shadow="open"
+      ><span style="color: red">Shadow open</span></my-toolbar
+    >
+    <my-toolbar shadow="closed">Shadow closed</my-toolbar>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+  <body>
+    <script type="module">
+      import { MyShadowElement } from "../web-component.js";
+      class MyButton extends MyShadowElement {
+        button = document.createElement("button");
+        constructor() {
+          super();
+          const slot = document.createElement("slot");
+          this.button.appendChild(slot);
+          this.button.addEventListener("click", () => {
+            console.log("clicked");
+          });
+        }
+        connectedCallback() {
+          super.connectedCallback();
+          this.root.appendChild(this.button);
+        }
+
+        static get observedAttributes() {
+          return ["label"];
+        }
+
+        attributeChangedCallback(name, oldValue, newValue) {
+          console.log("attributeChangedCallback", name, oldValue, newValue);
+          switch (name) {
+            case "label":
+              this.button.textContent = newValue;
+              break;
+          }
+        }
+      }
+      customElements.define("my-button", MyButton);
+    </script>
+    <my-button label="Without shadow">Without shadow</my-button>
+    <my-button label="Shadowed (open)" shadow>Shadowed (open)</my-button>
+    <my-button label="Shadow open" shadow="open">Shadow open</my-button>
+    <my-button label="Shadow closed" shadow="closed">Shadow closed</my-button>
+    <script>
+      setTimeout(() => {
+        document.querySelectorAll("my-button").forEach((button) => {
+          console.log(button.getAttribute("label"), button.shadowRoot);
+        });
+      }, 1000);
+    </script>
+  </body>
+</html>

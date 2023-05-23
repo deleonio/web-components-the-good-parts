@@ -166,7 +166,7 @@ Ein Button kann **mehr** beinhalten.
 <div class="flex mt-4 gap-2">
   <kol-button data-theme="ecl-eu" _label="Primary" _type="submit" _variant="primary"></kol-button>
   <kol-button data-theme="ecl-eu" _label="Normal mit Icon" _icon="codicon codicon-arrow-up" _variant="normal"></kol-button>
-  <kol-button data-theme="ecl-eu" _label="Primary" _icon="codicon codicon-trash" _icon-only _variant="danger"></kol-button>
+  <kol-button data-theme="ecl-eu" _label="Danger nur Icon" _icon="codicon codicon-trash" _icon-only _variant="danger"></kol-button>
 </div>
 
 ::right::
@@ -174,28 +174,70 @@ Ein Button kann **mehr** beinhalten.
 # <br>
 
 ```html
-<my-button>
-    <button aria-labelled-by="a665cf" class="primary" type="submit">
-        <span>
-            <i class="codicon codicon-arrow-left"></i>
-            <span>Primary</span>
-        </span>
+<my-button ...>
+    <button class="primary" type="submit">
+        Primary
     </button>
 </my-button>
 
-<my-button>
-    <button aria-labelled-by="a665cf" class="danger" type="button">
-        <span>
-            <i class="codicon codicon-trash"></i>
-        </span>
+<my-button ...>
+    <button class="primary" type="submit">
+        <i class="codicon codicon-arrow-left"></i>
+        Normal mit Icon
     </button>
-    <tooltip>
-      <span id="a665cf">Danger nur Icon</span>
-    </tooltip>
+</my-button>
+
+<my-button ...>
+    <button aria-labelled-by="a665cf" class="danger" type="button">
+        <i class="codicon codicon-trash"></i>  
+    </button>
+    <my-tooltip id="a665cf">Danger nur Icon</my-tooltip>
 </my-button>
 ```
 
-<small class="mt-8 text-xs"><sup>*</sup> Quellcode ist für die bessere Nachvollziehbarkeit stark vereinfacht.</small>
+<small class="mt-8 text-xs"><sup>*</sup> Quellcode ist für die bessere Nachvollziehbarkeit stark vereinfacht</small>
+---
+layout: two-cols
+---
+
+# Button-Task
+<small class="underline">Konsistenz vs. Flexibilität</small>
+
+**Slot**'s sind definierte Bereiche in einer Web Component, in die beliebiges HTML von außen reingegeben werden kann.
+
+- Gut geeignet für Wrapper-Komponenten
+- Ermöglichen Styling von außen (!)
+- Bergen Fehlerpotenzial (z.B. falsche Verwendung)
+- "Design"-Entscheidung (Konsistenz vs. Flexibilität)
+
+::right::
+
+# <br>
+
+Vor dem Rendern:
+
+```html
+<my-button>
+  <span class="text-red">Click me</span>
+  <svg slot="icon">...</svg>
+</my-button>
+```
+
+<br>
+Nach dem Rendern:
+
+```html
+<my-button ...>
+    # shadow-root
+        <slot name="icon">
+            <svg slot="icon">...</svg>
+        </slot>
+        <slot>
+            <span class="text-red">Click me</span>
+        </slot>
+</my-button>
+```
+
 
 ---
 layout: two-cols
@@ -216,6 +258,31 @@ Das **API**-Design hat großen **Einfluss** auf die **Langlebigkeit**.
 - _Underline_ Attribut-Name mit einem `_` (z.B. `_label`)
 - HTML kennt nur die Attribut-Typen: `string`, `boolean`, `number`
 
+
+::right::
+
+# <br>
+
+```html
+<my-button
+  _label="Primary"
+  _variant="primary">
+</my-button>
+
+<my-button
+  _icon="codicon codicon-arrow-left"
+  _label="Normal mit Icon"
+  _variant="normal">
+</my-button>
+
+<my-button
+  _icon="codicon codicon-arrow-left"
+  _hide-label
+  _label="Danger nur Icon"
+  _variant="danger">
+</my-button>
+```
+
 ---
 layout: two-cols
 ---
@@ -226,7 +293,7 @@ layout: two-cols
 Web Components sind die einfachst Form von **Komponenten** und verstehen nicht _ohne Weiteres_ komplexen Attribut-Werte.
 
 - Trenne äußere Attribut-Werte von inneren State-Werten
-- Validiere und Mappe Attribut- auf State-Werte
+- Validiere und mappe Attribut- auf State-Werte
 - Schützt vor unerwarteten Verhalten (z.B. Exceptions)
 - Sorgfalt bei reflektierten Attributen (reflect)
 - Listen und statische Objekte sind möglich
@@ -236,7 +303,7 @@ Web Components sind die einfachst Form von **Komponenten** und verstehen nicht _
 # <br>
 
 ```ts
-export function validateButtonVariant(value?: ButtonVariant): boolean {
+function validateButtonVariant(value?: ButtonVariant): boolean {
     return value === 'primary' || value === 'secondary' || value === 'normal' ||
     value === 'danger' || value === 'ghost' || value === 'custom';
 }
@@ -247,7 +314,7 @@ class Button {
 
     @State()
     private state: ButtonState = {
-      variant: 'normal',
+        variant: 'normal',
     };
 
     @Watch('_variant')
@@ -353,9 +420,11 @@ layout: two-cols
 # Button-Task
 <small class="underline">Fallstricke einfach lösen.</small>
 
-Manche Vorteile von Web Components sind nachteilig. Doch das ist einfach zu lösen.
+Manche Vorteile von Web Components sind nachteilig. Doch diese lassen sich größtenteils lösen.
 
 - Wiederverwendung von Komponenten (shadow & non-shadow)
+  - Browser- und Tool-Unterstützung (Test, Extensions)
+- Slot's bedacht verwenden (Standardisierungsgedanke)
 - Event-Handling (<kol-link _label="Form-associated custom elements" _href="https://web.dev/more-capable-form-controls/" _target="wev.dev"></kol-link>)
 - Server-Side-Rendering (<kol-link _label="Declarative Shadow DOM" _href="https://web.dev/declarative-shadow-dom/" _target="wev.dev"></kol-link>)
 
