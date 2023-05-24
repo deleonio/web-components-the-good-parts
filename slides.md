@@ -22,49 +22,6 @@ layout: center
 ### _The perspective makes the difference_
 
 ---
-layout: quote
----
-
-# Teaser
-
-Mit Hilfe des **Web Component**-Standard des **W3C** ist es schon seit **2014** möglich **eigene HTML-Elemente** zu erstellen. Aufgrund der **fehlenden** übergreifenden **Browser-Unterstützung** hatten es jedoch die **Web Components** lange Zeit schwer sich durchzusetzen.
-
-Dank **Microsoft** wendet sich **2021** das Blatt und der Web Component-Standard kann endlich zeigen was in ihm steckt. Mit den **Good Part** zeigen wir, wie **leistungsfähig** Web Components sind, wie man sie **richtig verwenden** muss und welche coolen **Features** noch auf uns warten.
-
-Hier im **Meetup** schauen wir hinter die Kulissen und wir loten zusammen aus, wie weit wir mit **Web Components** kommen können.
-
----
-layout: two-cols
----
-
-# Course of content
-
-- Icebreaker
-- Speaker introduction
-- What is a web component?
-  - Semantic, Styling and Behavior
-- When do I need web components?
-  - motivation: _webstandard vs. framework_
-  - qualities: _leading quality characteristics_
-  - corporate design: _shadow dom_
-  - requirements: _encapsulate anything_
-
-::right::
-
-# <br>
-
-<br>
-
-- **The good parts**
-  1. construction: _simple html_
-  2. properties: _api design, `_`-prefix, less_
-  3. validation: _only string, number, boolean_
-  4. consistent styling: _with shadow dom, performance_
-  5. handle dynamics: _encapsulate complexity, seo_
-  6. pitfalls: _reuse components, event handling, ssr_
-  7. developer experience: _typescript power_
-
----
 layout: about-me
 ---
 
@@ -110,20 +67,20 @@ layout: two-cols
 layout: two-cols
 ---
 
-# Motivation
-<small class="underline">Wann brauche ich eine Web Component?</small>
+  # Motivation
+  <small class="underline">Wann brauche ich eine Web Component?</small>
 
-**Web Components** eignen sich, um einen möglichst **unabhängigen Standard** zu schaffen.
+  **Web Components** eignen sich, um einen möglichst **unabhängigen Standard** zu schaffen.
 
-- Wenn folgende Qualitätsmerkmale Priorität haben:
-  - **Kompatibilität** - Webstandard
-  - **Portierbarkeit** - Web Components
-  - **Robustheit** - Shadow DOM
-  - **Wartbarkeit** - Single-Source-Of-Truth
-  - **Zugänglichkeit** - Accessibility, BITV
-- Konsistenz des Elements durch Shadow DOM
-- Kapselung von Anforderungen in Komponente
-- Framework-agnostisch durch reine Webstandards
+  - Wenn folgende Qualitätsmerkmale Priorität haben:
+    - **Kompatibilität** - Webstandard
+    - **Portierbarkeit** - Web Components
+    - **Robustheit** - Shadow DOM
+    - **Wartbarkeit** - Single-Source-Of-Truth
+    - **Zugänglichkeit** - Accessibility, BITV
+  - Konsistenz des Elements durch Shadow DOM
+  - Kapselung von Anforderungen in Komponente
+  - Framework-agnostisch durch reine Webstandards
 
 ---
 layout: two-cols
@@ -483,3 +440,16 @@ Die Entwickelnden erhalten alle Meta- und Typ-Informationen<sup>*</sup> aus dem 
 <div class="block text-center">
 <img src="assets/dx.png" alt="Developer Experience" class="w-100 m-auto"/>
 </div>
+
+---
+
+# Zusammenfassung
+
+Was wir über Web Components kennengelernt haben:
+
+- Web Components ist reiner Webstandards (W3C)
+- Kaum Abhängigkeiten (Framework-agnostisch)
+- übergreifende Wiederverwendbarkeit (CSR, SSR, SSG)
+- eignen sich zur Standardisierung von UI-Komponenten
+- Robust vor äußeren Einflüssen (Shadow DOM)
+- Web Components sind einfach gestrickt (Adapter)
