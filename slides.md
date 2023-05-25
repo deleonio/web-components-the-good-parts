@@ -2,7 +2,7 @@
 theme: ./theme
 colorSchema: light
 highlighter: shiki
-lineNumbers: true
+lineNumbers: false
 transition: fade
 info: |
   ## Impressum
